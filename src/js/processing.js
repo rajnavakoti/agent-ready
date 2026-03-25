@@ -96,7 +96,7 @@ export function updateStep(stepId, status, detail) {
     const step = STEPS.find(s => s.id === stepId);
     if (step && substepsEl) {
       substepsEl.innerHTML = step.substeps.map(s =>
-        `<div class="text-mono" style="font-size: 11px; margin: 2px 0; color: var(--color-muted);">  ✓ ${s.replace('...', ' — done')}</div>`
+        `<div class="text-mono" style="font-size: 14px; margin: 2px 0; color: var(--color-muted);">  ✓ ${s.replace('...', ' — done')}</div>`
       ).join('');
     }
   } else if (status === 'error') {
@@ -118,12 +118,12 @@ function startSubstepAnimation(stepId, substeps) {
 
   function showNext() {
     if (current < substeps.length) {
-      substepsEl.innerHTML += `<div class="text-mono" style="font-size: 11px; margin: 2px 0; color: var(--color-accent);">  ⟳ ${substeps[current]}</div>`;
+      substepsEl.innerHTML += `<div class="text-mono" style="font-size: 14px; margin: 2px 0; color: var(--color-accent);">  ⟳ ${substeps[current]}</div>`;
       current++;
     } else {
       // Loop back with different text
       current = 0;
-      substepsEl.innerHTML += `<div class="text-mono" style="font-size: 11px; margin: 2px 0; color: var(--color-muted);">  ↻ Continuing analysis...</div>`;
+      substepsEl.innerHTML += `<div class="text-mono" style="font-size: 14px; margin: 2px 0; color: var(--color-muted);">  ↻ Continuing analysis...</div>`;
     }
   }
 
@@ -159,7 +159,7 @@ export function renderProbeComplete(probeIndex, totalProbes, result) {
   const confidenceColor = result.confidence <= 2 ? '#8B0000' : result.confidence <= 3 ? '#8B7500' : '#006400';
 
   detailEl.innerHTML += `
-    <div class="probe-result text-mono" style="font-size: 11px; margin-top: 4px; padding: 4px 8px; border-left: 2px solid ${confidenceColor};">
+    <div class="probe-result text-mono" style="font-size: 14px; margin-top: 4px; padding: 4px 8px; border-left: 2px solid ${confidenceColor};">
       <span class="text-muted">[${probeIndex + 1}/${totalProbes}]</span>
       <span>${targetIcon}</span>
       <span>${result.category}</span>
