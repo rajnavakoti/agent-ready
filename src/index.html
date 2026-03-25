@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">LIGHT</button>
   <main id="app">
 
     <!-- Hero Section -->
@@ -307,5 +308,25 @@
 
   </main>
   <script type="module" src="js/app.js"></script>
+  <script>
+    (function() {
+      const toggle = document.getElementById('theme-toggle');
+      const html = document.documentElement;
+      const savedTheme = localStorage.getItem('theme');
+      
+      if (savedTheme) {
+        html.setAttribute('data-theme', savedTheme);
+        toggle.textContent = savedTheme === 'dark' ? 'LIGHT' : 'DARK';
+      }
+      
+      toggle.addEventListener('click', function() {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        toggle.textContent = newTheme === 'dark' ? 'LIGHT' : 'DARK';
+      });
+    })();
+  </script>
 </body>
 </html>

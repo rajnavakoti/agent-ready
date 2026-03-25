@@ -2,6 +2,29 @@
    App-specific component styles
    ========================================================================== */
 
+/* --- Theme Toggle --- */
+.theme-toggle {
+  position: fixed;
+  top: var(--space-md);
+  right: var(--space-md);
+  z-index: 1000;
+  padding: var(--space-xs) var(--space-md);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--color-bg-card);
+  border: var(--border-medium);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
 /* --- Hero --- */
 .hero {
   padding: var(--space-3xl) 0;
