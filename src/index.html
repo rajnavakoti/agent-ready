@@ -24,18 +24,18 @@
       <a href="#datasets" class="text-mono text-muted" style="font-size: var(--font-size-xs); text-decoration: none;">DATASETS</a>
       <a href="https://github.com/rajnavakoti/agent-ready" target="_blank" class="text-mono text-muted" style="font-size: var(--font-size-xs); text-decoration: none;">GITHUB</a>
       <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" style="position: static; font-size: var(--font-size-xs);">LIGHT</button>
-      <button onclick="document.getElementById('auth-modal').classList.toggle('hidden')" class="btn btn--accent" style="font-size: var(--font-size-xs); padding: 6px 16px;">SIGN IN</button>
+      <button onclick="document.getElementById('auth-modal').style.display='flex'" class="btn btn--accent" style="font-size: var(--font-size-xs); padding: 6px 16px;">SIGN IN</button>
     </div>
   </nav>
 
   <!-- Auth Modal (mock) -->
-  <div id="auth-modal" class="hidden" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 200; display: flex; align-items: center; justify-content: center;">
+  <div id="auth-modal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 200; display: none; align-items: center; justify-content: center;">
     <div style="background: var(--color-bg); border: 3px solid var(--color-border); padding: 32px; max-width: 400px; width: 90%;">
       <h3 style="margin-top: 0;">Sign in to AgentReady</h3>
       <p class="text-muted" style="font-size: var(--font-size-sm);">Save your battle test results, track readiness over time, and benchmark against others.</p>
       <button style="width: 100%; padding: 12px; margin-top: 16px; border: 2px solid var(--color-border); background: var(--color-bg); color: var(--color-text); font-family: var(--font-mono); cursor: pointer; font-size: var(--font-size-sm);" onclick="alert('GitHub OAuth coming soon!')">CONTINUE WITH GITHUB</button>
       <button style="width: 100%; padding: 12px; margin-top: 8px; border: 2px solid var(--color-border); background: var(--color-bg); color: var(--color-text); font-family: var(--font-mono); cursor: pointer; font-size: var(--font-size-sm);" onclick="alert('Google OAuth coming soon!')">CONTINUE WITH GOOGLE</button>
-      <button class="text-mono text-muted" style="width: 100%; padding: 8px; margin-top: 16px; border: none; background: none; cursor: pointer; font-size: var(--font-size-xs);" onclick="document.getElementById('auth-modal').classList.add('hidden')">CLOSE</button>
+      <button class="text-mono text-muted" style="width: 100%; padding: 8px; margin-top: 16px; border: none; background: none; cursor: pointer; font-size: var(--font-size-xs);" onclick="document.getElementById('auth-modal').style.display='none'">CLOSE</button>
     </div>
   </div>
 
