@@ -53,9 +53,9 @@ export function renderProcessing(container) {
                 <span class="processing__step-number text-mono text-accent" style="font-size: var(--font-size-lg); font-weight: bold;">${String(i + 1).padStart(2, '0')}</span>
                 <span class="processing__step-label text-mono" style="font-size: var(--font-size-sm);">${step.label}</span>
               </div>
-              <span class="processing__step-status text-mono" id="status-${step.id}" style="font-size: var(--font-size-xs);">WAITING</span>
+              <span class="processing__step-status text-mono" id="status-${step.id}" style="font-size: var(--font-size-base);">WAITING</span>
             </div>
-            <p class="processing__step-desc text-muted" style="font-size: var(--font-size-xs); margin: 8px 0 0 0;">${step.description}</p>
+            <p class="processing__step-desc text-muted" style="font-size: var(--font-size-base); margin: 8px 0 0 0;">${step.description}</p>
             <div class="processing__substeps" id="substeps-${step.id}" style="margin-top: 8px; display: none;"></div>
             <div class="processing__step-detail" id="detail-${step.id}" style="margin-top: 8px;"></div>
           </div>
@@ -143,7 +143,7 @@ export function renderProbeProgress(probeIndex, totalProbes, probe) {
   if (!detailEl) return;
 
   detailEl.innerHTML = `
-    <div class="probe-progress text-mono" style="font-size: var(--font-size-xs); padding: 4px 8px; border-left: 2px solid var(--color-accent);">
+    <div class="probe-progress text-mono" style="font-size: var(--font-size-base); padding: 4px 8px; border-left: 2px solid var(--color-accent);">
       <span class="text-accent">[${probeIndex + 1}/${totalProbes}]</span>
       <span>${probe.category}</span>
       <span class="text-muted">— ${probe.question.substring(0, 80)}...</span>

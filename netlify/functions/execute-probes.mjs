@@ -63,9 +63,14 @@ export async function handler(event) {
       };
     }
 
+    // Truncate description if too long
+    const truncatedDesc = description.length > 15000
+      ? description.substring(0, 15000) + '\n\n[... content truncated ...]'
+      : description;
+
     // Run all probes in parallel to avoid timeout
     const results = await Promise.all(
-      probes.map(probe => executeProbe(description, probe))
+      probes.map(probe => executeProbe(truncatedDesc, probe))
     );
 
     return {
