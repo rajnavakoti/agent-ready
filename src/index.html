@@ -70,19 +70,24 @@
               </div>
             </div>
 
-            <div class="upload-zone mb-sm">
-              <label class="btn btn--secondary" style="cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
-                <span>Upload files</span>
-                <input type="file" id="knowledge-upload" multiple accept=".txt,.md,.json,.yaml,.yml,.csv,.pdf,.py,.ts,.js" style="display: none;" />
+            <div class="upload-zone" style="border: 2px dashed var(--color-border); padding: 24px; text-align: center; margin-bottom: 8px;">
+              <label style="cursor: pointer; display: block;">
+                <span class="text-mono text-accent" style="font-size: var(--font-size-lg);">DROP FILES OR CLICK TO UPLOAD</span>
+                <p class="text-muted" style="font-size: var(--font-size-sm); margin-top: 4px;">.md .txt .json .yaml .py .ts .js — multiple files supported</p>
+                <input type="file" id="knowledge-upload" multiple accept=".txt,.md,.json,.yaml,.yml,.csv,.py,.ts,.js" style="display: none;" />
               </label>
-              <span id="knowledge-file-list" class="text-mono text-muted" style="font-size: var(--font-size-xs); margin-left: 8px;"></span>
+              <div id="knowledge-file-list" class="text-mono" style="font-size: var(--font-size-xs); margin-top: 8px;"></div>
             </div>
-            <textarea
-              id="domain-input"
-              rows="8"
-              placeholder="Or paste directly: We built a customer support agent for a fintech app. It handles account inquiries, transaction disputes, and card replacements..."
-              aria-label="Knowledge base"
-            ></textarea>
+            <details style="margin-top: 8px;">
+              <summary class="text-mono text-muted" style="font-size: var(--font-size-xs); cursor: pointer;">OR PASTE DIRECTLY</summary>
+              <textarea
+                id="domain-input"
+                rows="5"
+                placeholder="Paste your context docs here..."
+                aria-label="Knowledge base"
+                style="margin-top: 8px;"
+              ></textarea>
+            </details>
             <span id="char-count" class="text-mono text-muted mt-xs" style="font-size: var(--font-size-xs); display: block;">0 characters</span>
           </div>
 
@@ -94,19 +99,24 @@
               <span class="text-mono text-muted" style="font-size: var(--font-size-xs);">OPTIONAL</span>
             </div>
             <p class="text-muted mb-sm" style="font-size: var(--font-size-sm);">Skills, rules, system prompts, MCP configs, tool definitions — the stuff you built on top of the LLM. We'll test if your harness covers the scenarios your agent will face.</p>
-            <div class="upload-zone mb-sm">
-              <label class="btn btn--secondary" style="cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
-                <span>Upload files</span>
+            <div class="upload-zone" style="border: 2px dashed var(--color-border); padding: 24px; text-align: center; margin-bottom: 8px;">
+              <label style="cursor: pointer; display: block;">
+                <span class="text-mono text-accent" style="font-size: var(--font-size-lg);">DROP FILES OR CLICK TO UPLOAD</span>
+                <p class="text-muted" style="font-size: var(--font-size-sm); margin-top: 4px;">System prompts, skills, rules, MCP configs, tool definitions</p>
                 <input type="file" id="harness-upload" multiple accept=".txt,.md,.json,.yaml,.yml,.py,.ts,.js" style="display: none;" />
               </label>
-              <span id="harness-file-list" class="text-mono text-muted" style="font-size: var(--font-size-xs); margin-left: 8px;"></span>
+              <div id="harness-file-list" class="text-mono" style="font-size: var(--font-size-xs); margin-top: 8px;"></div>
             </div>
-            <textarea
-              id="harness-input"
-              rows="6"
-              placeholder="Or paste directly: system prompts, skill definitions, tool configs, rules files, MCP server setup..."
-              aria-label="Agent harness"
-            ></textarea>
+            <details style="margin-top: 8px;">
+              <summary class="text-mono text-muted" style="font-size: var(--font-size-xs); cursor: pointer;">OR PASTE DIRECTLY</summary>
+              <textarea
+                id="harness-input"
+                rows="4"
+                placeholder="Paste your system prompts, skill definitions, tool configs..."
+                aria-label="Agent harness"
+                style="margin-top: 8px;"
+              ></textarea>
+            </details>
           </div>
 
           <!-- Step 3: Mission -->
@@ -197,6 +207,103 @@
         </div>
       </div>
     </section>
+
+    <!-- Datasets Section -->
+    <section class="section" id="datasets">
+      <div class="container">
+        <h2>Powered by real-world data</h2>
+        <p class="text-muted mt-sm mb-xl">We don't make up test scenarios. AgentReady uses 17+ public datasets across 8 domains to simulate the problems your agent will face in production.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+          <div style="border: 2px solid var(--color-border); padding: 16px;">
+            <p class="text-mono text-accent" style="font-size: var(--font-size-xs);">CUSTOMER SUPPORT</p>
+            <p style="font-size: var(--font-size-sm);">100K+ real brand-customer exchanges from 109 companies</p>
+          </div>
+          <div style="border: 2px solid var(--color-border); padding: 16px;">
+            <p class="text-mono text-accent" style="font-size: var(--font-size-xs);">IT INCIDENTS</p>
+            <p style="font-size: var(--font-size-sm);">24,918 real ServiceNow incidents with full lifecycle data</p>
+          </div>
+          <div style="border: 2px solid var(--color-border); padding: 16px;">
+            <p class="text-mono text-accent" style="font-size: var(--font-size-xs);">HEALTHCARE</p>
+            <p style="font-size: var(--font-size-sm);">206K+ clinical questions from USMLE & AIIMS real exams</p>
+          </div>
+          <div style="border: 2px solid var(--color-border); padding: 16px;">
+            <p class="text-mono text-accent" style="font-size: var(--font-size-xs);">LEGAL</p>
+            <p style="font-size: var(--font-size-sm);">1,117 real contracts with 54K+ expert annotations</p>
+          </div>
+          <div style="border: 2px solid var(--color-border); padding: 16px;">
+            <p class="text-mono text-accent" style="font-size: var(--font-size-xs);">FINANCE / FRAUD</p>
+            <p style="font-size: var(--font-size-sm);">875K+ real transactions with labeled fraud cases</p>
+          </div>
+          <div style="border: 2px solid var(--color-border); padding: 16px;">
+            <p class="text-mono text-accent" style="font-size: var(--font-size-xs);">E-COMMERCE</p>
+            <p style="font-size: var(--font-size-sm);">571M+ real reviews and support conversations</p>
+          </div>
+          <div style="border: 2px solid var(--color-border); padding: 16px;">
+            <p class="text-mono text-accent" style="font-size: var(--font-size-xs);">REAL ESTATE</p>
+            <p style="font-size: var(--font-size-sm);">20K+ property QA pairs + real transaction records</p>
+          </div>
+          <div style="border: 2px solid var(--color-border); padding: 16px;">
+            <p class="text-mono text-accent" style="font-size: var(--font-size-xs);">CODE / BUGS</p>
+            <p style="font-size: var(--font-size-sm);">3,129 real GitHub issues + Java bugs with verified fixes</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <h2>Pricing</h2>
+        <p class="text-muted mt-sm mb-xl">Start free. Scale when your agents get serious.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+          <div style="border: 2px solid var(--color-border); padding: 24px;">
+            <p class="text-mono text-accent" style="font-size: var(--font-size-xs);">FREE</p>
+            <p style="font-size: var(--font-size-xl); font-weight: bold; margin: 8px 0;">$0</p>
+            <p class="text-muted" style="font-size: var(--font-size-sm);">3 battle tests / month</p>
+            <ul style="font-size: var(--font-size-sm); margin-top: 12px; padding-left: 16px;">
+              <li>1 agent</li>
+              <li>Quick intensity (3 probes)</li>
+              <li>Readiness score + gap list</li>
+              <li>Community presets</li>
+            </ul>
+          </div>
+          <div style="border: 3px solid var(--color-accent); padding: 24px;">
+            <p class="text-mono text-accent" style="font-size: var(--font-size-xs);">PRO</p>
+            <p style="font-size: var(--font-size-xl); font-weight: bold; margin: 8px 0;">$49<span class="text-muted" style="font-size: var(--font-size-sm);">/mo</span></p>
+            <p class="text-muted" style="font-size: var(--font-size-sm);">Unlimited battle tests</p>
+            <ul style="font-size: var(--font-size-sm); margin-top: 12px; padding-left: 16px;">
+              <li>10 agents</li>
+              <li>All intensities (3-10 probes)</li>
+              <li>Harness testing</li>
+              <li>Benchmark history</li>
+              <li>Custom domain datasets</li>
+            </ul>
+          </div>
+          <div style="border: 2px solid var(--color-border); padding: 24px;">
+            <p class="text-mono text-accent" style="font-size: var(--font-size-xs);">ENTERPRISE</p>
+            <p style="font-size: var(--font-size-xl); font-weight: bold; margin: 8px 0;">Custom</p>
+            <p class="text-muted" style="font-size: var(--font-size-sm);">For teams shipping production agents</p>
+            <ul style="font-size: var(--font-size-sm); margin-top: 12px; padding-left: 16px;">
+              <li>Unlimited agents</li>
+              <li>CI/CD integration</li>
+              <li>Private datasets</li>
+              <li>Compliance reporting</li>
+              <li>API access</li>
+              <li>Team collaboration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="border-top: 2px solid var(--color-border); padding: 24px 0; text-align: center;">
+      <div class="container">
+        <p class="text-mono text-muted" style="font-size: var(--font-size-xs);">AgentReady — Ship with data, not vibes. | <a href="https://arxiv.org/abs/2603.14057" target="_blank" style="color: var(--color-accent);">Research</a> · <a href="https://github.com/rajnavakoti/agent-ready" target="_blank" style="color: var(--color-accent);">GitHub</a> · <a href="https://rajnavakoti-dev.web.app" target="_blank" style="color: var(--color-accent);">About</a></p>
+      </div>
+    </footer>
 
   </main>
   <script type="module" src="js/app.js"></script>
