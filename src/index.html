@@ -16,7 +16,29 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">LIGHT</button>
+  <!-- Nav Bar -->
+  <nav style="display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; border-bottom: 2px solid var(--color-border); position: sticky; top: 0; background: var(--color-bg); z-index: 100;">
+    <span class="text-mono" style="font-size: var(--font-size-base); font-weight: bold; letter-spacing: 2px;">⚔️ AGENTREADY</span>
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <a href="#pricing" class="text-mono text-muted" style="font-size: var(--font-size-xs); text-decoration: none;">PRICING</a>
+      <a href="#datasets" class="text-mono text-muted" style="font-size: var(--font-size-xs); text-decoration: none;">DATASETS</a>
+      <a href="https://github.com/rajnavakoti/agent-ready" target="_blank" class="text-mono text-muted" style="font-size: var(--font-size-xs); text-decoration: none;">GITHUB</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" style="position: static; font-size: var(--font-size-xs);">LIGHT</button>
+      <button onclick="document.getElementById('auth-modal').classList.toggle('hidden')" class="btn btn--accent" style="font-size: var(--font-size-xs); padding: 6px 16px;">SIGN IN</button>
+    </div>
+  </nav>
+
+  <!-- Auth Modal (mock) -->
+  <div id="auth-modal" class="hidden" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 200; display: flex; align-items: center; justify-content: center;">
+    <div style="background: var(--color-bg); border: 3px solid var(--color-border); padding: 32px; max-width: 400px; width: 90%;">
+      <h3 style="margin-top: 0;">Sign in to AgentReady</h3>
+      <p class="text-muted" style="font-size: var(--font-size-sm);">Save your battle test results, track readiness over time, and benchmark against others.</p>
+      <button style="width: 100%; padding: 12px; margin-top: 16px; border: 2px solid var(--color-border); background: var(--color-bg); color: var(--color-text); font-family: var(--font-mono); cursor: pointer; font-size: var(--font-size-sm);" onclick="alert('GitHub OAuth coming soon!')">CONTINUE WITH GITHUB</button>
+      <button style="width: 100%; padding: 12px; margin-top: 8px; border: 2px solid var(--color-border); background: var(--color-bg); color: var(--color-text); font-family: var(--font-mono); cursor: pointer; font-size: var(--font-size-sm);" onclick="alert('Google OAuth coming soon!')">CONTINUE WITH GOOGLE</button>
+      <button class="text-mono text-muted" style="width: 100%; padding: 8px; margin-top: 16px; border: none; background: none; cursor: pointer; font-size: var(--font-size-xs);" onclick="document.getElementById('auth-modal').classList.add('hidden')">CLOSE</button>
+    </div>
+  </div>
+
   <main id="app">
 
     <!-- Hero Section -->
@@ -25,6 +47,26 @@
         <p class="hero__label text-mono text-accent">AGENTREADY</p>
         <h1 class="hero__title">Battle-test your agent.<br>Ship with data, not vibes.</h1>
         <p class="hero__subtitle">Your agent is only as good as what it knows. We stress-test your knowledge base and agent harness with simulated real-world scenarios — and tell you exactly where it'll break before it breaks in production.</p>
+
+        <!-- Stats Banner -->
+        <div style="display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap;">
+          <div style="text-align: center;">
+            <span class="text-mono text-accent" style="font-size: var(--font-size-xl); font-weight: bold;">17+</span>
+            <p class="text-muted" style="font-size: var(--font-size-xs);">REAL-WORLD DATASETS</p>
+          </div>
+          <div style="text-align: center;">
+            <span class="text-mono text-accent" style="font-size: var(--font-size-xl); font-weight: bold;">8</span>
+            <p class="text-muted" style="font-size: var(--font-size-xs);">BUSINESS DOMAINS</p>
+          </div>
+          <div style="text-align: center;">
+            <span class="text-mono text-accent" style="font-size: var(--font-size-xl); font-weight: bold;">800M+</span>
+            <p class="text-muted" style="font-size: var(--font-size-xs);">DATA POINTS</p>
+          </div>
+          <div style="text-align: center;">
+            <span class="text-mono text-accent" style="font-size: var(--font-size-xl); font-weight: bold;">arXiv</span>
+            <p class="text-muted" style="font-size: var(--font-size-xs);">RESEARCH-BACKED</p>
+          </div>
+        </div>
         <div class="hero__points">
           <div class="hero__point">
             <span class="text-mono text-accent">01</span>
