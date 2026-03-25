@@ -45,14 +45,19 @@ export async function handler(event) {
       };
     }
 
+    // Truncate if too long to avoid timeouts (keep first 15K chars)
+    const truncatedDesc = description.length > 15000
+      ? description.substring(0, 15000) + '\n\n[... content truncated for analysis ...]'
+      : description;
+
     const response = await client.messages.create({
       model: 'claude-sonnet-4-20250514',
-      max_tokens: 2048,
+      max_tokens: 4096,
       system: SYSTEM_PROMPT,
       messages: [
         {
           role: 'user',
-          content: `Here is the agent configuration:\n\n${description}\n\nGenerate targeted battle-test probes for this agent. Be ruthless — find the blind spots.`
+          content: `Here is the agent configuration:\n\n${truncatedDesc}\n\nGenerate exactly 6 targeted battle-test probes for this agent. Be ruthless — find the blind spots.`
         }
       ]
     });
