@@ -64,8 +64,9 @@ Rule: Test files must exist for any new utility function.`,
 
 const DIFFICULTY_LABELS = {
   1: 'QUICK (3 tests)',
-  2: 'STANDARD (6 tests)',
-  3: 'INTENSE (10 tests)'
+  2: 'SIMPLE (6 tests)',
+  3: 'STANDARD (15 tests)',
+  4: 'INTENSE (50+ tests)'
 };
 
 const MIN_CHARS = 50;

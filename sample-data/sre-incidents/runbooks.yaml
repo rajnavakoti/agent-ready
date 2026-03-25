@@ -1,0 +1,39 @@
+runbooks:
+  - id: RB-001
+    title: "Order gateway restart procedure"
+    last_updated: "2026-01-15"
+    status: current
+    steps:
+      - "Check Grafana sre-overview for current error rate"
+      - "Verify no in-flight payments (check payment-engine /health)"
+      - "kubectl rollout restart deployment/order-gateway -n production"
+      - "Monitor recovery on Grafana for 5 minutes"
+      - "Verify order success rate returns to >99.9%"
+  
+  - id: RB-002
+    title: "Payment engine failover"
+    last_updated: "2025-08-20"
+    status: outdated
+    warning: "Pre-Stripe migration. Steps reference PayPal adapter which no longer exists."
+  
+  - id: RB-003
+    title: "Database failover"
+    last_updated: "2025-11-03"
+    status: current
+  
+  - id: RB-004
+    title: "Redis cluster recovery"
+    last_updated: "2024-06-12"
+    status: outdated
+    warning: "Pre-cluster upgrade. Node topology has changed."
+
+  - id: RB-005
+    title: "Region failover"
+    last_updated: "2025-09-30"
+    status: current
+    critical_note: "ALWAYS check for in-flight orders before failover. Split-brain risk."
+  
+  - id: RB-006
+    title: "Notification backpressure"
+    status: missing
+    warning: "Runbook does not exist. Create post-incident."

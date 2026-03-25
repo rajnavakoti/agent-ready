@@ -1,0 +1,15 @@
+slos:
+  order-gateway:
+    availability: 99.95%
+    latency_p99: 500ms
+    error_budget_monthly: 21.6_minutes
+  
+  payment-engine:
+    success_rate: 99.99%
+    latency_p99: 1000ms
+    error_budget_monthly: 4.32_minutes
+  
+  inventory-api:
+    availability: 99.9%
+    latency_p99: 200ms
+    error_budget_monthly: 43.2_minutes

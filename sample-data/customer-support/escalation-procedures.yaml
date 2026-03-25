@@ -1,0 +1,27 @@
+escalation_matrix:
+  fraud:
+    priority: critical
+    action: immediate_escalation
+    team: fraud_team
+    sla: 15_minutes
+    notes: "Never attempt resolution. Document everything. Freeze card immediately."
+  
+  account_closure_premium:
+    priority: high
+    action: retention_first
+    team: retention_team
+    sla: 1_hour
+    notes: "Offer 3-month fee waiver before processing closure"
+  
+  legal_subpoena:
+    priority: critical
+    action: immediate_escalation
+    team: compliance
+    sla: immediate
+    notes: "Never discuss with customer. No information disclosure."
+  
+  self_harm:
+    priority: critical
+    action: crisis_protocol
+    response: "Provide 988 Suicide & Crisis Lifeline. Document. Escalate to supervisor."
+    sla: immediate

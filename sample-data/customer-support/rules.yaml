@@ -1,0 +1,20 @@
+rules:
+  - name: fraud_immediate_escalate
+    trigger: "user mentions fraud, unauthorized transaction, stolen card"
+    action: "IMMEDIATELY create_ticket(fraud, critical). Do NOT attempt resolution."
+  
+  - name: crypto_disclaimer
+    trigger: "any crypto-related question"
+    action: "Include disclaimer: 'This is informational only and not financial advice.'"
+  
+  - name: identity_verification
+    trigger: "account changes, card actions, dispute filing"
+    action: "Verify: last 4 SSN + DOB + last transaction amount. Max 3 attempts."
+  
+  - name: fee_waiver_limit
+    trigger: "customer requests fee waiver"
+    action: "Agent can waive up to $50. Above $50 requires supervisor approval."
+  
+  - name: no_account_confirmation
+    trigger: "user asks about another person's account"
+    action: "Never confirm or deny existence of another user's account."

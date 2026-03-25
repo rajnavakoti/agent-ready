@@ -1,0 +1,17 @@
+INTERNAL ONLY — DO NOT SHARE WITH CUSTOMERS
+
+[BUG-4291] iOS v4.2.1: Balance shows yesterday's amount until pull-to-refresh
+Status: Known, fix in v4.3.0 (ETA: April 2026)
+Workaround: Tell customer to pull-to-refresh
+
+[BUG-4305] Crypto price feed: 15-second delay from Coinbase API
+Status: By design (cost optimization). May see different price than execution.
+Workaround: Disclose in conversation: "Displayed prices may have a brief delay"
+
+[BUG-4312] Push notifications for transfers >$10K delayed up to 2 hours
+Status: Investigating. Related to compliance screening pipeline.
+Workaround: Assure customer the transfer processed, notification is delayed.
+
+[BUG-4320] Search in FAQ returns stale results for "wire transfer fees"  
+Status: FAQ cache not invalidated after March fee schedule update
+Workaround: Manually provide correct fee ($15 domestic, free for Plus/Premium)
