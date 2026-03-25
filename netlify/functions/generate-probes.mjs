@@ -2,22 +2,28 @@ import Anthropic from '@anthropic-ai/sdk';
 
 const client = new Anthropic();
 
-const SYSTEM_PROMPT = `You are a probe generator for the Context Gap Scanner. Given a domain description, you generate targeted questions that an AI agent would need to answer when working in that domain.
+const SYSTEM_PROMPT = `You are a battle-test probe generator for AgentReady. Given an agent's knowledge base, harness (skills/rules/tools/system prompts), and mission, you generate stress-test scenarios that probe both knowledge completeness AND harness coverage.
 
-Generate exactly 6 probes across these categories:
-1. INCIDENT — A realistic production incident to diagnose
-2. INTEGRATION — A system integration question requiring knowledge of how components connect
-3. DATA_FLOW — A question about how data moves through the domain
-4. TERMINOLOGY — A question requiring domain-specific terminology knowledge
-5. PROCESS — A question about a business process or operational workflow
-6. ARCHITECTURE — A question requiring understanding of architectural decisions and trade-offs
+The input will be structured as:
+- AGENT MISSION: what the agent is supposed to do
+- KNOWLEDGE BASE: the docs/context the agent has access to
+- AGENT HARNESS: (optional) skills, rules, tools, system prompts the agent uses
+
+Generate probes across these categories:
+1. INCIDENT — A realistic crisis scenario the agent must handle
+2. EDGE_CASE — A corner case that tests boundary knowledge and harness rules
+3. KNOWLEDGE_GAP — A question that requires knowledge likely NOT in the provided docs
+4. HARNESS_COVERAGE — A scenario testing whether the agent's skills/tools/rules can handle it
+5. CROSS_DOMAIN — A question spanning multiple areas of the agent's knowledge
+6. ADVERSARIAL — A misleading or ambiguous scenario that tests robustness
 
 Each probe should be:
-- Specific enough that a generic answer would be visibly wrong
-- Realistic — something a real team member would actually encounter
-- Answerable only with domain knowledge, not general CS knowledge
+- Specific to THIS agent's mission and domain — not generic
+- Realistic — something that would actually happen in production
+- Designed to find blind spots — where knowledge exists but harness doesn't cover it, or vice versa
+- Escalating in difficulty if more probes are requested
 
-Return a JSON array of objects with fields: category, question, description (one line explaining what this probe tests).
+Return a JSON array of objects with fields: category, question, description (one line explaining what this probe tests), target (either "knowledge", "harness", or "both").
 Return ONLY the JSON array, no other text.`;
 
 export async function handler(event) {
@@ -42,7 +48,7 @@ export async function handler(event) {
       messages: [
         {
           role: 'user',
-          content: `Here is the domain description:\n\n${description}\n\nGenerate 6 targeted probes for this domain.`
+          content: `Here is the agent configuration:\n\n${description}\n\nGenerate targeted battle-test probes for this agent. Be ruthless — find the blind spots.`
         }
       ]
     });

@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Context Gap Scanner — See where your AI agents will fail</title>
-  <meta name="description" content="Paste your company docs. See where your AI agents will fail. Discover the tribal knowledge gaps blocking your AI agents.">
-  <meta property="og:title" content="Context Gap Scanner">
-  <meta property="og:description" content="Paste your company docs. See where your AI agents will fail.">
+  <title>AgentReady — Battle-test your AI agent's knowledge before you ship</title>
+  <meta name="description" content="Stress-test your agent's knowledge base and harness with simulated real-world scenarios. Get a readiness score and find blind spots before production.">
+  <meta property="og:title" content="AgentReady">
+  <meta property="og:description" content="Battle-test your AI agent. Ship with data, not vibes.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Context Gap Scanner">
-  <meta name="twitter:description" content="Paste your company docs. See where your AI agents will fail.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+  <meta name="twitter:title" content="AgentReady">
+  <meta name="twitter:description" content="Battle-test your AI agent. Ship with data, not vibes.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚔️</text></svg>">
   <link rel="stylesheet" href="css/design-system.css">
   <link rel="stylesheet" href="css/app.css">
 </head>
@@ -21,24 +21,24 @@
     <!-- Hero Section -->
     <section class="section hero" id="hero">
       <div class="container">
-        <p class="hero__label text-mono text-accent">CONTEXT GAP SCANNER</p>
-        <h1 class="hero__title">See where your<br>AI agents will fail.</h1>
-        <p class="hero__subtitle">Paste your company docs. We probe them with AI agents. You see the tribal knowledge gaps that make your agents useless on real work.</p>
+        <p class="hero__label text-mono text-accent">AGENTREADY</p>
+        <h1 class="hero__title">Battle-test your agent.<br>Ship with data, not vibes.</h1>
+        <p class="hero__subtitle">Your agent is only as good as what it knows. We stress-test your knowledge base and agent harness with simulated real-world scenarios — and tell you exactly where it'll break before it breaks in production.</p>
         <div class="hero__points">
           <div class="hero__point">
             <span class="text-mono text-accent">01</span>
-            <span>Paste a domain description — architecture docs, README, onboarding guide</span>
+            <span>Upload your agent's knowledge base — docs, context, system descriptions</span>
           </div>
           <div class="hero__point">
             <span class="text-mono text-accent">02</span>
-            <span>We fire AI agent probes — incident diagnosis, integration design, data flow questions</span>
+            <span>Upload your harness — skills, rules, system prompts, MCP configs</span>
           </div>
           <div class="hero__point">
             <span class="text-mono text-accent">03</span>
-            <span>See your gaps — what's documented, what's tribal, what's missing entirely</span>
+            <span>Describe what your agent does — we simulate real-world battle scenarios and score its readiness</span>
           </div>
         </div>
-        <a href="#scanner" class="btn btn--primary hero__cta">Scan your domain</a>
+        <a href="#scanner" class="btn btn--primary hero__cta">Battle-test your agent</a>
       </div>
     </section>
 
@@ -48,29 +48,86 @@
 
         <!-- Input Form -->
         <div id="input-section">
-          <h2>Describe your domain</h2>
-          <p class="text-muted mt-sm mb-lg">Paste anything — architecture docs, README, onboarding notes, system descriptions. The more context, the better the scan.</p>
+          <h2>Battle-test your agent</h2>
+          <p class="text-muted mt-sm mb-lg">Three steps: give us the knowledge, the harness, and the mission. We'll find the blind spots.</p>
 
-          <div class="preset-buttons mb-md">
-            <span class="text-mono text-muted" style="font-size: var(--font-size-xs);">TRY A PRESET:</span>
-            <div class="flex flex-wrap gap-sm mt-sm">
-              <button class="btn btn--secondary preset-btn" data-preset="payments" type="button">Payment Processing</button>
-              <button class="btn btn--secondary preset-btn" data-preset="healthcare" type="button">Healthcare Claims</button>
-              <button class="btn btn--secondary preset-btn" data-preset="ecommerce" type="button">E-commerce Fulfillment</button>
+          <!-- Step 1: Knowledge Base -->
+          <div class="input-step mb-lg">
+            <div class="flex items-center gap-sm mb-sm">
+              <span class="text-mono text-accent" style="font-size: var(--font-size-lg); font-weight: bold;">01</span>
+              <h3 style="margin: 0;">Knowledge Base</h3>
+              <span class="text-mono text-muted" style="font-size: var(--font-size-xs);">REQUIRED</span>
+            </div>
+            <p class="text-muted mb-sm" style="font-size: var(--font-size-sm);">Your agent's context — docs, READMEs, architecture notes, onboarding guides. What does your agent know?</p>
+
+            <div class="preset-buttons mb-md">
+              <span class="text-mono text-muted" style="font-size: var(--font-size-xs);">TRY A PRESET:</span>
+              <div class="flex flex-wrap gap-sm mt-sm">
+                <button class="btn btn--secondary preset-btn" data-preset="realestate" type="button">Real Estate Agent</button>
+                <button class="btn btn--secondary preset-btn" data-preset="support" type="button">Customer Support Bot</button>
+                <button class="btn btn--secondary preset-btn" data-preset="sre" type="button">SRE Incident Agent</button>
+                <button class="btn btn--secondary preset-btn" data-preset="codereview" type="button">Code Review Agent</button>
+              </div>
+            </div>
+
+            <textarea
+              id="domain-input"
+              rows="8"
+              placeholder="Example: We built a customer support agent for a fintech app. It handles account inquiries, transaction disputes, and card replacements. It has access to our FAQ docs, product guides, and API reference..."
+              aria-label="Knowledge base"
+            ></textarea>
+            <span id="char-count" class="text-mono text-muted mt-xs" style="font-size: var(--font-size-xs); display: block;">0 characters</span>
+          </div>
+
+          <!-- Step 2: Harness -->
+          <div class="input-step mb-lg">
+            <div class="flex items-center gap-sm mb-sm">
+              <span class="text-mono text-accent" style="font-size: var(--font-size-lg); font-weight: bold;">02</span>
+              <h3 style="margin: 0;">Agent Harness</h3>
+              <span class="text-mono text-muted" style="font-size: var(--font-size-xs);">OPTIONAL</span>
+            </div>
+            <p class="text-muted mb-sm" style="font-size: var(--font-size-sm);">Skills, rules, system prompts, MCP configs, tool definitions — the stuff you built on top of the LLM. We'll test if your harness covers the scenarios your agent will face.</p>
+            <textarea
+              id="harness-input"
+              rows="6"
+              placeholder="Paste your system prompt, skill definitions, tool configs, rules files, MCP server setup... anything that shapes how your agent behaves beyond the base model."
+              aria-label="Agent harness"
+            ></textarea>
+          </div>
+
+          <!-- Step 3: Mission -->
+          <div class="input-step mb-lg">
+            <div class="flex items-center gap-sm mb-sm">
+              <span class="text-mono text-accent" style="font-size: var(--font-size-lg); font-weight: bold;">03</span>
+              <h3 style="margin: 0;">Agent Mission</h3>
+              <span class="text-mono text-muted" style="font-size: var(--font-size-xs);">REQUIRED</span>
+            </div>
+            <p class="text-muted mb-sm" style="font-size: var(--font-size-sm);">What does your agent do? One line — the business domain and purpose.</p>
+            <input
+              id="mission-input"
+              type="text"
+              placeholder="e.g., Real estate agent for home evaluation and pricing, SRE agent for incident management, Customer support bot for a fintech app"
+              aria-label="Agent mission"
+              style="width: 100%; padding: 12px 16px; font-size: var(--font-size-base); border: 2px solid var(--color-border); background: var(--color-bg); color: var(--color-text); font-family: var(--font-body);"
+            />
+          </div>
+
+          <!-- Difficulty Slider -->
+          <div class="input-step mb-lg">
+            <div class="flex items-center gap-md mb-sm">
+              <span class="text-mono text-muted" style="font-size: var(--font-size-xs);">BATTLE INTENSITY:</span>
+              <input id="difficulty-slider" type="range" min="1" max="3" value="2" style="flex: 1; accent-color: var(--color-accent);" aria-label="Test difficulty" />
+              <span id="difficulty-label" class="text-mono text-accent" style="font-size: var(--font-size-sm); min-width: 120px;">STANDARD (6)</span>
+            </div>
+            <div class="flex justify-between text-mono text-muted" style="font-size: var(--font-size-xs);">
+              <span>QUICK (3 tests)</span>
+              <span>STANDARD (6 tests)</span>
+              <span>INTENSE (10 tests)</span>
             </div>
           </div>
 
-          <div class="input-wrapper">
-            <textarea
-              id="domain-input"
-              rows="12"
-              placeholder="Example: We run a payment processing platform. Three main services: transaction gateway (handles card payments, bank transfers), risk engine (real-time fraud scoring, velocity checks), and settlement service (daily batch settlements to merchants). The gateway talks to 4 external payment providers via REST APIs. Risk engine uses an ML model retrained weekly. Settlement runs as a nightly batch job on a legacy system that nobody fully understands anymore..."
-              aria-label="Domain description"
-            ></textarea>
-            <div class="input-footer flex justify-between items-center mt-sm">
-              <span id="char-count" class="text-mono text-muted" style="font-size: var(--font-size-xs);">0 characters</span>
-              <button id="scan-btn" class="btn btn--accent" disabled type="button">Scan for gaps</button>
-            </div>
+          <div class="input-footer flex justify-end items-center mt-md">
+            <button id="scan-btn" class="btn btn--accent" disabled type="button">Run battle test</button>
           </div>
         </div>
 
@@ -83,47 +140,46 @@
       </div>
     </section>
 
-    <!-- DDC Explainer Section -->
-    <section class="section" id="ddc">
+    <!-- How It Works Section -->
+    <section class="section" id="how-it-works">
       <div class="container">
-        <h2>How to fill the gaps</h2>
-        <p class="text-muted mt-sm mb-xl">Demand-Driven Context (DDC) is a methodology for building domain knowledge bases through agent failure. Like TDD — but for knowledge.</p>
+        <h2>How AgentReady works</h2>
+        <p class="text-muted mt-sm mb-xl">We don't test your LLM. We test what YOU built on top of it — the knowledge and the harness. That's where agents fail in the real world.</p>
 
         <div class="ddc-cycle">
           <div class="ddc-cycle__step">
             <span class="ddc-cycle__number text-mono text-accent">01</span>
             <div>
-              <p class="text-strong">Give the agent a real problem</p>
-              <p class="text-muted" style="font-size: var(--font-size-sm);">An incident to diagnose, an integration to design, a process to explain.</p>
+              <p class="text-strong">Simulate real-world scenarios</p>
+              <p class="text-muted" style="font-size: var(--font-size-sm);">Using public datasets across healthcare, finance, incident management, and more — we generate battle scenarios your agent will face in production.</p>
             </div>
           </div>
           <div class="ddc-cycle__step">
             <span class="ddc-cycle__number text-mono text-accent">02</span>
             <div>
-              <p class="text-strong">Let it fail</p>
-              <p class="text-muted" style="font-size: var(--font-size-sm);">The agent identifies exactly what knowledge is missing. That's the demand signal.</p>
+              <p class="text-strong">Probe knowledge + harness</p>
+              <p class="text-muted" style="font-size: var(--font-size-sm);">We test both: does your knowledge base cover the scenario? Does your harness (skills, rules, tools) handle it correctly?</p>
             </div>
           </div>
           <div class="ddc-cycle__step">
             <span class="ddc-cycle__number text-mono text-accent">03</span>
             <div>
-              <p class="text-strong">Curate the minimum context</p>
-              <p class="text-muted" style="font-size: var(--font-size-sm);">A domain expert fills only the gaps. Structured, connected, machine-readable.</p>
+              <p class="text-strong">Surface blind spots</p>
+              <p class="text-muted" style="font-size: var(--font-size-sm);">The gap between what your agent knows and what the real world demands — that's what kills you. We find it before your users do.</p>
             </div>
           </div>
           <div class="ddc-cycle__step">
             <span class="ddc-cycle__number text-mono text-accent">04</span>
             <div>
-              <p class="text-strong">Agent succeeds. Knowledge compounds.</p>
-              <p class="text-muted" style="font-size: var(--font-size-sm);">Each cycle builds reusable context. After 20-30 problems, the agent knows your domain.</p>
+              <p class="text-strong">Get a readiness score + action plan</p>
+              <p class="text-muted" style="font-size: var(--font-size-sm);">A clear benchmark score, prioritized gap list, and specific recommendations. Ship with confidence.</p>
             </div>
           </div>
         </div>
 
         <div class="flex gap-md mt-xl flex-wrap">
-          <a href="https://arxiv.org/abs/2603.14057" class="btn btn--primary" target="_blank" rel="noopener">Read the paper</a>
-          <a href="https://github.com/ea-toolkit/ddc" class="btn btn--secondary" target="_blank" rel="noopener">View on GitHub</a>
-          <a href="https://github.com/ea-toolkit/ddc/blob/main/GETTING-STARTED.md" class="btn btn--secondary" target="_blank" rel="noopener">Get started</a>
+          <a href="https://arxiv.org/abs/2603.14057" class="btn btn--secondary" target="_blank" rel="noopener">Research: arXiv paper</a>
+          <a href="https://github.com/rajnavakoti/agent-ready" class="btn btn--secondary" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </section>

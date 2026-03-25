@@ -2,27 +2,28 @@ import Anthropic from '@anthropic-ai/sdk';
 
 const client = new Anthropic();
 
-const SYSTEM_PROMPT = `You are a gap analyzer for the Context Gap Scanner. Given the results of AI agent probes against a domain, you produce a structured analysis of knowledge gaps.
+const SYSTEM_PROMPT = `You are a battle-test analyzer for AgentReady. Given the results of stress-test probes against an agent's knowledge base and harness, you produce a readiness assessment.
 
 Analyze the probe results and produce:
 
-1. CATEGORY SCORES — Rate coverage (0-100) for each DDC entity type:
-   - systems: Knowledge of systems, services, and infrastructure
-   - processes: Knowledge of business processes and operational workflows
-   - terminology: Knowledge of domain-specific jargon and concepts
-   - data_models: Knowledge of data structures, schemas, and flows
-   - integrations: Knowledge of how systems connect and communicate
-   - tribal_knowledge: Undocumented operational wisdom, workarounds, and institutional memory
+1. CATEGORY SCORES — Rate coverage (0-100) for each area:
+   - knowledge_depth: How well the knowledge base covers the agent's domain
+   - knowledge_breadth: How many areas of the domain are covered vs missing
+   - harness_coverage: How well the agent's skills, rules, and tools handle the scenarios tested
+   - edge_case_handling: How robust the agent is against corner cases and adversarial inputs
+   - cross_domain: How well the agent handles questions spanning multiple areas
+   - tribal_knowledge: Undocumented operational wisdom that's missing from both knowledge and harness
 
-2. OVERALL SCORE — Weighted average (0-100). Tribal knowledge weighs 2x because it's the hardest to acquire.
+2. OVERALL READINESS SCORE — Weighted average (0-100). Harness coverage and edge cases weigh 1.5x because they determine real-world reliability.
 
-3. TOP GAPS — The 10 most important knowledge gaps to fill, ordered by impact. Each gap should specify:
-   - what: What specific knowledge is missing
-   - category: Which DDC entity type it belongs to
-   - impact: Why this gap matters (one sentence)
+3. TOP GAPS — The 10 most critical blind spots, ordered by impact. Each gap should specify:
+   - what: What specific capability or knowledge is missing
+   - target: "knowledge", "harness", or "both" — which layer has the gap
+   - impact: Why this gap will cause failures (one sentence)
    - severity: "critical", "high", or "medium"
+   - fix: One-line recommendation for how to fix it
 
-4. INTERPRETATION — One paragraph summarizing the domain's AI-readiness and what it means.
+4. INTERPRETATION — One paragraph battle assessment. Be direct: is this agent ready for production or not? What's the biggest risk?
 
 Return ONLY a JSON object with fields: categories (object with scores), overallScore (number), topGaps (array), interpretation (string).`;
 
