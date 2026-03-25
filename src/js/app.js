@@ -80,6 +80,28 @@ function init() {
   const difficultySlider = document.getElementById('difficulty-slider');
   const difficultyLabel = document.getElementById('difficulty-label');
 
+  // File upload handlers
+  function setupFileUpload(inputId, textareaId, fileListId) {
+    const fileInput = document.getElementById(inputId);
+    const textarea = document.getElementById(textareaId);
+    const fileList = document.getElementById(fileListId);
+
+    fileInput.addEventListener('change', async () => {
+      const files = Array.from(fileInput.files);
+      if (!files.length) return;
+
+      fileList.textContent = files.map(f => f.name).join(', ');
+      const contents = await Promise.all(files.map(f => f.text()));
+      const combined = files.map((f, i) => `--- ${f.name} ---\n${contents[i]}`).join('\n\n');
+
+      textarea.value = combined;
+      textarea.dispatchEvent(new Event('input'));
+    });
+  }
+
+  setupFileUpload('knowledge-upload', 'domain-input', 'knowledge-file-list');
+  setupFileUpload('harness-upload', 'harness-input', 'harness-file-list');
+
   function updateScanButton() {
     const knowledgeOk = textarea.value.length >= MIN_CHARS;
     const missionOk = missionInput.value.trim().length > 0;

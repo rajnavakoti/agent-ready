@@ -70,10 +70,17 @@
               </div>
             </div>
 
+            <div class="upload-zone mb-sm">
+              <label class="btn btn--secondary" style="cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span>Upload files</span>
+                <input type="file" id="knowledge-upload" multiple accept=".txt,.md,.json,.yaml,.yml,.csv,.pdf,.py,.ts,.js" style="display: none;" />
+              </label>
+              <span id="knowledge-file-list" class="text-mono text-muted" style="font-size: var(--font-size-xs); margin-left: 8px;"></span>
+            </div>
             <textarea
               id="domain-input"
               rows="8"
-              placeholder="Example: We built a customer support agent for a fintech app. It handles account inquiries, transaction disputes, and card replacements. It has access to our FAQ docs, product guides, and API reference..."
+              placeholder="Or paste directly: We built a customer support agent for a fintech app. It handles account inquiries, transaction disputes, and card replacements..."
               aria-label="Knowledge base"
             ></textarea>
             <span id="char-count" class="text-mono text-muted mt-xs" style="font-size: var(--font-size-xs); display: block;">0 characters</span>
@@ -87,10 +94,17 @@
               <span class="text-mono text-muted" style="font-size: var(--font-size-xs);">OPTIONAL</span>
             </div>
             <p class="text-muted mb-sm" style="font-size: var(--font-size-sm);">Skills, rules, system prompts, MCP configs, tool definitions — the stuff you built on top of the LLM. We'll test if your harness covers the scenarios your agent will face.</p>
+            <div class="upload-zone mb-sm">
+              <label class="btn btn--secondary" style="cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                <span>Upload files</span>
+                <input type="file" id="harness-upload" multiple accept=".txt,.md,.json,.yaml,.yml,.py,.ts,.js" style="display: none;" />
+              </label>
+              <span id="harness-file-list" class="text-mono text-muted" style="font-size: var(--font-size-xs); margin-left: 8px;"></span>
+            </div>
             <textarea
               id="harness-input"
               rows="6"
-              placeholder="Paste your system prompt, skill definitions, tool configs, rules files, MCP server setup... anything that shapes how your agent behaves beyond the base model."
+              placeholder="Or paste directly: system prompts, skill definitions, tool configs, rules files, MCP server setup..."
               aria-label="Agent harness"
             ></textarea>
           </div>
