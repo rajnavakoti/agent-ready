@@ -1,17 +1,11 @@
 {
-  "name": "context-gap-scanner",
-  "version": "0.1.0",
-  "description": "Paste your company docs. See where your AI agents will fail.",
+  "name": "agent-ready-workspace",
   "private": true,
   "scripts": {
-    "dev": "netlify dev",
-    "build": "echo 'Static site — no build step required'",
-    "deploy": "netlify deploy --prod"
-  },
-  "dependencies": {
-    "@anthropic-ai/sdk": "^0.39.0"
+    "test": "pnpm --recursive test",
+    "clean": "rm -rf node_modules packages/*/node_modules"
   },
   "devDependencies": {
-    "netlify-cli": "^18.0.0"
+    "vitest": "^3.0.0"
   }
 }

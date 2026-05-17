@@ -1,0 +1,23 @@
+{
+  "name": "@agent-ready/core",
+  "version": "0.1.0",
+  "description": "AgentReady pipeline engine — probe generation, execution, and gap analysis",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./pipeline": "./src/pipeline/index.js",
+    "./llm": "./src/llm/index.js"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.0"
+  },
+  "license": "MIT"
+}

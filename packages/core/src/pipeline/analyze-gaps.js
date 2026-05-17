@@ -1,7 +1,3 @@
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic();
-
 const SYSTEM_PROMPT = `You are a battle-test analyzer for AgentReady. Given the results of stress-test probes against an agent's knowledge base and harness, you produce a readiness assessment.
 
 Analyze the probe results and produce:
@@ -27,50 +23,28 @@ Analyze the probe results and produce:
 
 Return ONLY a JSON object with fields: categories (object with scores), overallScore (number), topGaps (array), interpretation (string).`;
 
-export async function handler(event) {
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
+/**
+ * Analyze probe execution results and produce a readiness report.
+ * @param {import('../llm/anthropic.js').AnthropicProvider} llm
+ * @param {Object} options
+ * @param {Array} options.results - Probe execution results
+ * @returns {Promise<Object>} Gap analysis with scores, gaps, and interpretation
+ */
+export async function analyzeGaps(llm, { results }) {
+  if (!results || !Array.isArray(results)) {
+    throw new Error('Missing results array');
   }
 
-  try {
-    const { results } = JSON.parse(event.body);
+  const probesSummary = results.map(r =>
+    `[${r.category}] Q: ${r.question}\nConfidence: ${r.confidence}/5\nAttempt: ${r.attempt}\nGaps: ${r.gaps.join('; ')}`,
+  ).join('\n\n');
 
-    if (!results || !Array.isArray(results)) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: 'Missing results array' })
-      };
-    }
+  const raw = await llm.complete(
+    SYSTEM_PROMPT,
+    `Here are the probe execution results:\n\n${probesSummary}\n\nAnalyze these results and produce the gap analysis.`,
+    { maxTokens: 2048 },
+  );
 
-    const probesSummary = results.map(r =>
-      `[${r.category}] Q: ${r.question}\nConfidence: ${r.confidence}/5\nAttempt: ${r.attempt}\nGaps: ${r.gaps.join('; ')}`
-    ).join('\n\n');
-
-    const response = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 2048,
-      system: SYSTEM_PROMPT,
-      messages: [
-        {
-          role: 'user',
-          content: `Here are the probe execution results:\n\n${probesSummary}\n\nAnalyze these results and produce the gap analysis.`
-        }
-      ]
-    });
-
-    const raw = response.content[0].text;
-    const text = raw.replace(/^```(?:json)?\s*/m, '').replace(/\s*```\s*$/m, '');
-    const analysis = JSON.parse(text);
-
-    return {
-      statusCode: 200,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ analysis })
-    };
-  } catch (error) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to analyze gaps', detail: error.message })
-    };
-  }
+  const text = raw.replace(/^```(?:json)?\s*/m, '').replace(/\s*```\s*$/m, '');
+  return JSON.parse(text);
 }

@@ -1,3 +1,11 @@
 node_modules/
-.netlify/
 .env
+dist/
+agent-ready-report.json
+agent-ready-report.md
+
+# OS
+.DS_Store
+
+# Datasets cache
+.agent-ready/
